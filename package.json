@@ -1,0 +1,15 @@
+{
+  "name": "storelocator",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "concurrently": "^5.1.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "dev": "concurrently \"cd api && npm run start \"  \"cd store && npm run start  \"  "
+  },
+  "author": "",
+  "license": "ISC"
+}
