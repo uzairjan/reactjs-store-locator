@@ -3,7 +3,7 @@ import { Grid, Paper, Typography, AppBar, Toolbar, Input, Button } from '@materi
 import { makeStyles } from '@material-ui/core/styles';
 import SaveIcon from '@material-ui/icons/Save';
 
-import PlacesAutocomplete from 'react-places-autocomplete';
+import LocationSearchInput from './components/LocationSearchInput';
 
 import {Map, InfoWindow, Marker, GoogleApiWrapper, Polygon, Polyline} from 'google-maps-react';
 
@@ -60,29 +60,25 @@ class  App extends React.Component{
             </Toolbar>
         </AppBar>
           <Grid container>
-              <Grid md={3} item >  
-              <Typography variant="h4" align="center" >Enter Store Location</Typography>
-                  <Paper style={{ height:'400px',padding:20, paddingTop:30, boxSizing:"border-box" }}>
-                        <form onSubmit={() =>handleSubmit()} >
-                            <Input 
-                              type="text"
-                              fullWidth
-                              placeholder="Please enter the location address"
-                            />
-                            <Button
-                              fullWidth
-                              variant="contained"
-                              color="primary"
-                              size="large"
-                              type="submit"
-                              startIcon={<SaveIcon />}
-                            >
-                              Submit
-                            </Button>
-                        </form>
-                  </Paper>
-              </Grid>
-              <Grid md={9} item>
+              <LocationSearchInput />
+                  {/* <form onSubmit={() =>handleSubmit()} >
+                      <Input 
+                        type="text"
+                        fullWidth
+                        placeholder="Please enter the location address"
+                      />
+                      <Button
+                        fullWidth
+                        variant="contained"
+                        color="primary"
+                        size="large"
+                        type="submit"
+                        startIcon={<SaveIcon />}
+                      >
+                        Submit
+                      </Button>
+                  </form> */}
+              <Grid md={9} item style={{ height:'400px' }}>
                        <Typography align="center" variant="h4">Stores Locations</Typography>
                     <Paper style={{ height:'400px' }}>
                         <Map google={this.props.google}
@@ -114,11 +110,7 @@ class  App extends React.Component{
                                 strokeWeight={2}
                                 fillColor="#0000FF"
                                 fillOpacity={0.35} />
-                            <Polyline
-                                paths={triangleCoords}
-                                strokeColor="#0000FF"
-                                strokeOpacity={0.8}
-                                strokeWeight={2} />
+                        
                           </Map>
                     </Paper>
               </Grid>
